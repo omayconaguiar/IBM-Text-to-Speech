@@ -1,5 +1,5 @@
 import { commentRepository } from "../repo/commentRepository";
-import { IComment  } from '../interfaces/IComment';
+import { IComment } from '../interfaces/IComment';
 
 export default class comment implements comment {
     private _commentRepository: commentRepository

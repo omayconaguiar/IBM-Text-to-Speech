@@ -13,7 +13,7 @@ export default (app: Router) => {
         async (req: Request, res: Response, next: NextFunction) => {
             const logger = Container.get('logger');
             // @ts-ignore
-            logger.debug('Calling POST /ddr3/comment: with: %o', {
+            logger.debug('Calling POST /comment: with: %o', {
                 "params": req.params,
                 "headers": req.headers,
                 "query": req.query,
@@ -40,7 +40,7 @@ export default (app: Router) => {
         async (req: Request, res: Response, next: NextFunction) => {
             const logger = Container.get('logger');
             // @ts-ignore
-            logger.debug('Calling POST /ddr3/comment: with: %o', {
+            logger.debug('Calling POST /comment: with: %o', {
                 "params": req.params,
                 "headers": req.headers,
                 "query": req.query,
@@ -56,7 +56,7 @@ export default (app: Router) => {
                 res.status(200).json(response);
             } catch (e) {
                 // @ts-ignore
-                logger.error('🔥 Error calling POST /ddr3/comment: %o', e);
+                logger.error('🔥 Error calling POST /comment: %o', e);
                 return next(e);
             }
 
@@ -67,7 +67,7 @@ export default (app: Router) => {
         async (req: Request, res: Response, next: NextFunction) => {
             const logger = Container.get('logger');
             // @ts-ignore
-            logger.debug('Calling POST /ddr3/comment: with: %o', {
+            logger.debug('Calling POST /comment: with: %o', {
                 "params": req.params,
                 "headers": req.headers,
                 "query": req.query,
@@ -77,13 +77,14 @@ export default (app: Router) => {
                 const communicationServiceInstance = Container.get(comment);
                 const communicationRequest: IComment = {
                     ...req.query,
-                    ...req.body
+                    ...req.body,
+                    ...req.params
                 }
                 const response = await communicationServiceInstance.getById(communicationRequest);
                 res.status(200).json(response);
             } catch (e) {
                 // @ts-ignore
-                logger.error('🔥 Error calling POST /ddr3/comment: %o', e);
+                logger.error('🔥 Error calling POST /comment: %o', e);
                 return next(e);
             }
 

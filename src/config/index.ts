@@ -18,6 +18,11 @@ export default {
         root: '/comment'
     },
 
+    ibm: {
+        apikey: process.env.API_KEY,
+        url: process.env.URL
+    },
+
 
     database: {
         name: process.env.DB_NAME || 'test',
