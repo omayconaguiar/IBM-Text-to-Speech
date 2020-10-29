@@ -110,7 +110,7 @@ export default (app: Router) => {
                             'Content-Type': 'audio/wav',
                         });
 
-                        //res.write(buffer);
+                        res.write(buffer);
                         res.end();
                     })
                     .catch(err => {

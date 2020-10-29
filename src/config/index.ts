@@ -10,10 +10,10 @@ if (!envFound) {
 const configs = {
     PORT: parseInt(process.env.PORT, 10) || 3000,
     LOG_LEVEL: process.env.LOG_LEVEL || 'silly',
-    DB_NAME: process.env.DB_NAME || 'test',
-    DB_USERNAME: process.env.DB_USERNAME || 'test',
-    DB_PASSWORD: process.env.DB_PASSWORD || '12345678',
-    DB_HOSTNAME: process.env.DB_HOSTNAME || 'localhost',
+    DB_NAME: process.env.DB_NAME || 'node20_mysql',
+    DB_USERNAME: process.env.DB_USERNAME || 'b1e7316b754a99',
+    DB_PASSWORD: process.env.DB_PASSWORD || 'da2d1081',
+    DB_HOSTNAME: process.env.DB_HOSTNAME || 'usb-cdbr-iron-east-04.cleardb.net',
     DB_PORT: process.env.DB_PORT || 3306,
     API_KEY: process.env.API_KEY,
     URL: process.env.URL
@@ -56,10 +56,10 @@ export default {
 
 
     database: {
-        name: process.env.DB_NAME || 'test',
-        username: process.env.DB_USERNAME || 'test',
-        password: process.env.DB_PASSWORD || '12345678',
-        host: process.env.DB_HOSTNAME || 'localhost',
+        name: process.env.DB_NAME || 'node20_mysql',
+        username: process.env.DB_USERNAME || 'b1e7316b754a99',
+        password: process.env.DB_PASSWORD || 'da2d1081',
+        host: process.env.DB_HOSTNAME || 'usb-cdbr-iron-east-04.cleardb.net',
         port: process.env.DB_PORT || 3306
     },
 };

@@ -8,7 +8,7 @@ for migration in $(ls v*.sql | sort); do
 	if [[ $migration > $version && $migration == *.sql ]]; then
 		echo
     	echo " ==========  Executando migracao: $migration ==========  "
-		mysql -h localhost -U postgres -d test < $migration
+		mysql -h localhost -U test -D test < $migration
 	fi
 done
 

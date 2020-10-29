@@ -13,7 +13,7 @@ export default (app: Router) => {
         async (req: Request, res: Response, next: NextFunction) => {
             const logger = Container.get('logger');
             // @ts-ignore
-            logger.debug('Calling GET /comment: with: %o', {
+            logger.debug('Calling GET /: with: %o', {
                 "params": req.params,
                 "headers": req.headers,
                 "query": req.query,
@@ -30,7 +30,7 @@ export default (app: Router) => {
 
             } catch (e) {
                 // @ts-ignore
-                logger.error('🔥 Error calling GET /comment: %o', e);
+                logger.error('🔥 Error calling GET /: %o', e);
                 return next(e);
             }
         });
