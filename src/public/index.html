@@ -113,9 +113,10 @@
         let id = row.find('.id').text();
 
         $.ajax({
-          url: `${URI}/${id}`,
+          url: 'http://127.0.0.1:3000/page/' + id,
           method: 'GET',
           success: function (response) {
+            window.open('/page/' + id)
             $('#getProducts').click();
           }
         });
