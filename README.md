@@ -26,7 +26,7 @@
 
 ## IBM credenciais
 
-    Crie suas credencias de API_KEY:
+    Caso queira criar suas próprias credencias:
 
     https://cloud.ibm.com/login
 

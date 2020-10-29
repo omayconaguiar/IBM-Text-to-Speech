@@ -42,7 +42,7 @@ export default (app: Router) => {
         async (req: Request, res: Response, next: NextFunction) => {
             const logger = Container.get('logger');
             // @ts-ignore
-            logger.debug('Calling GET /comment/:id: with: %o', {
+            logger.debug('Calling GET /page/:id: with: %o', {
                 "params": req.params,
                 "headers": req.headers,
                 "query": req.query,
@@ -76,7 +76,7 @@ export default (app: Router) => {
                     })
                     .then(buffer => {
                         res.set({
-                            'Content-Disposition': 'attachment; filename=work.wav',
+                            'Content-Disposition': 'attachment; filename=' + response[0].text + '.wav',
                             'Content-Type': 'audio/wav',
                         });
                         res.write(buffer);
@@ -87,7 +87,7 @@ export default (app: Router) => {
                     });
             } catch (e) {
                 // @ts-ignore
-                logger.error('🔥 Error calling GET /comment/:id: %o', e);
+                logger.error('🔥 Error calling GET /page/:id: %o', e);
                 return next(e);
             }
 
