@@ -7,11 +7,12 @@ const fs = require('fs');
 const TextToSpeechV1 = require('ibm-watson/text-to-speech/v1');
 const { IamAuthenticator } = require('ibm-watson/auth');
 import config from '../../config';
+import path from 'path';
 
 const route = Router();
 
 export default (app: Router) => {
-    app.use(route);
+    app.use(config.api.comment.root, route);
     route.post('/',
         middlewares.validateInput('createCommentSchema'),
         async (req: Request, res: Response, next: NextFunction) => {
@@ -33,7 +34,7 @@ export default (app: Router) => {
                 res.status(200).json(response);
             } catch (e) {
                 // @ts-ignore
-                logger.error('🔥 Error calling POST /ddr3/comment: %o', e);
+                logger.error('🔥 Error calling POST /comment: %o', e);
                 return next(e);
             }
 
@@ -44,7 +45,7 @@ export default (app: Router) => {
         async (req: Request, res: Response, next: NextFunction) => {
             const logger = Container.get('logger');
             // @ts-ignore
-            logger.debug('Calling POST /comment: with: %o', {
+            logger.debug('Calling GET /comment: with: %o', {
                 "params": req.params,
                 "headers": req.headers,
                 "query": req.query,
@@ -60,18 +61,18 @@ export default (app: Router) => {
                 res.status(200).json(response);
             } catch (e) {
                 // @ts-ignore
-                logger.error('🔥 Error calling POST /comment: %o', e);
+                logger.error('🔥 Error calling GET /comment: %o', e);
                 return next(e);
             }
-
         });
+
 
     route.get('/:id',
         middlewares.validateInput('getByIdSchema'),
         async (req: Request, res: Response, next: NextFunction) => {
             const logger = Container.get('logger');
             // @ts-ignore
-            logger.debug('Calling POST /comment/:id: with: %o', {
+            logger.debug('Calling GET /comment/:id: with: %o', {
                 "params": req.params,
                 "headers": req.headers,
                 "query": req.query,
@@ -109,7 +110,7 @@ export default (app: Router) => {
                             'Content-Type': 'audio/wav',
                         });
 
-                        res.write(buffer);
+                        //res.write(buffer);
                         res.end();
                     })
                     .catch(err => {
@@ -117,7 +118,7 @@ export default (app: Router) => {
                     });
             } catch (e) {
                 // @ts-ignore
-                logger.error('🔥 Error calling POST /comment/:id: %o', e);
+                logger.error('🔥 Error calling GET /comment/:id: %o', e);
                 return next(e);
             }
 

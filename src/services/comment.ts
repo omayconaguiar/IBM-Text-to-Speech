@@ -55,6 +55,15 @@ export default class commentService extends CommentInteface {
     }
   }
 
+
+  public async getPage(input: IComment): Promise<any> {
+    try {
+      return await (input);
+    }
+    catch (e) {
+      return Promise.reject(e);
+    }
+  }
 }
 
 
