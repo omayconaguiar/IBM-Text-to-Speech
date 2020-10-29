@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #wrapper {
+            display: flex;
+        }
+
+        #left {
+            flex: 0 0 65%;
+        }
+
+        #right {
+            flex: 1;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        /*
+        $(document).ready(function () {
+            $("button").click(function () {
+                $.get("http://127.0.0.1:3000/comment", function (data, status) {
+                    alert(JSON.stringify(data))
+                });
+            });
+        });
+        */
+        $(document).ready(function () {
+            getElementById('left')(function () {
+                $.get("http://127.0.0.1:3000/comment", function (data, status) {
+                    alert(JSON.stringify(data))
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <button id="left">aaaaaaaaa</button>
+
+        <button id="right">Send an HTTP GET request to a page and get the result back</button>
+
+    </div>
+</body>
+
+</html>

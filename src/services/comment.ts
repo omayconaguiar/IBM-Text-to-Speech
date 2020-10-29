@@ -1,17 +1,18 @@
 import { Service, Inject } from 'typedi';
-import { IComment } from '../interfaces/IComment';
+import { IComment, CommentInteface } from '../interfaces/IComment';
 import commentModel from '../business/comment';
 
 @Service()
-export default class commentService {
+export default class commentService extends CommentInteface {
   private _controller: commentModel
 
   constructor(
     @Inject('logger') private logger: any
   ) {
+    super();
     this._controller = new commentModel();
-
   }
+
 
   public async createComment(input: IComment): Promise<any> {
     try {
@@ -34,9 +35,10 @@ export default class commentService {
   }
 
 
-  public async getById(input: IComment): Promise<any> {
+  public getById = async (input: IComment): Promise<any> => {
     try {
       this.logger.silly('Calling getByIdSchema');
+
       return await this._controller.getById(input);
     }
     catch (e) {
