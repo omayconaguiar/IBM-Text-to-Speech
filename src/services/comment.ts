@@ -38,8 +38,17 @@ export default class commentService extends CommentInteface {
   public getById = async (input: IComment): Promise<any> => {
     try {
       this.logger.silly('Calling getByIdSchema');
-
       return await this._controller.getById(input);
+    }
+    catch (e) {
+      return Promise.reject(e);
+    }
+  }
+
+  public async updateById(input: IComment): Promise<any> {
+    try {
+      this.logger.silly('Calling updateByIdSchema');
+      return await this._controller.updateById(input);
     }
     catch (e) {
       return Promise.reject(e);

@@ -71,7 +71,7 @@ export default (app: Router) => {
         async (req: Request, res: Response, next: NextFunction) => {
             const logger = Container.get('logger');
             // @ts-ignore
-            logger.debug('Calling POST /comment: with: %o', {
+            logger.debug('Calling POST /comment/:id: with: %o', {
                 "params": req.params,
                 "headers": req.headers,
                 "query": req.query,
@@ -108,6 +108,7 @@ export default (app: Router) => {
                             'Content-Disposition': 'attachment; filename=work.wav',
                             'Content-Type': 'audio/wav',
                         });
+
                         res.write(buffer);
                         res.end();
                     })
@@ -116,7 +117,35 @@ export default (app: Router) => {
                     });
             } catch (e) {
                 // @ts-ignore
-                logger.error('🔥 Error calling POST /comment: %o', e);
+                logger.error('🔥 Error calling POST /comment/:id: %o', e);
+                return next(e);
+            }
+
+        });
+
+    route.patch('/:id',
+        middlewares.validateInput('updateByIdSchema'),
+        async (req: Request, res: Response, next: NextFunction) => {
+            const logger = Container.get('logger');
+            // @ts-ignore
+            logger.debug('Calling PATCH /comment/:id: with: %o', {
+                "params": req.params,
+                "headers": req.headers,
+                "query": req.query,
+                "body": req.body
+            });
+            try {
+                const communicationServiceInstance = Container.get(comment);
+                const communicationRequest: IComment = {
+                    ...req.query,
+                    ...req.body,
+                    ...req.params
+                }
+                const response = await communicationServiceInstance.updateById(communicationRequest);
+                res.status(200).json(response);
+            } catch (e) {
+                // @ts-ignore
+                logger.error('🔥 Error calling PATCH /comment/:id: %o', e);
                 return next(e);
             }
 

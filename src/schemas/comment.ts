@@ -37,6 +37,19 @@ const getByIdSchema =
     "required": []
 }
 
+const updateByIdSchema =
+
+{
+    "title": "updateByIdSchema",
+    "type": "object",
+    "properties": {
+        "text": {
+            "type": "string"
+        }
+    },
+    "required": ["text"]
+}
+
 export default [
     {
         name: "createCommentSchema",
@@ -49,5 +62,9 @@ export default [
     {
         name: "getByIdSchema",
         schema: getByIdSchema
+    },
+    {
+        name: "updateByIdSchema",
+        schema: updateByIdSchema
     }
 ]

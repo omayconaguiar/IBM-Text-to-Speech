@@ -19,4 +19,8 @@ export default class comment implements comment {
     async getById(input: IComment): Promise<any> {
         return await this._commentRepository.getById(input);
     }
+
+    async updateById(input: IComment): Promise<any> {
+        return await this._commentRepository.updateById(input);
+    }
 }

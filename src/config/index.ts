@@ -31,14 +31,4 @@ export default {
         host: process.env.DB_HOSTNAME || 'localhost',
         port: process.env.DB_PORT || 3306
     },
-
-    PaymentsApi: {
-        username: process.env.USERNAME_ZOOP,
-        password: '',
-        host: 'https://api.zoop.ws/v1/marketplaces/',
-        endpoints: {
-            createClient: process.env.MARKET_PLACE_ID + '/buyers'
-        }
-    }
-
 };
