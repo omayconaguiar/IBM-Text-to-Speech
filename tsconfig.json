@@ -11,9 +11,7 @@
   "include": [
     "./src/**/*",
     "./src/config/*.json",
-    "./src/config/*.svg",
-    "knexfile.ts",
-    "seeds"
+    "./src/config/*.svg"
   ],
   "exclude": [
     "node_modules",

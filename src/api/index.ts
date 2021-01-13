@@ -1,8 +1,10 @@
 import { Router } from 'express';
-import user from './routes/user';
+import comment from './routes/comment';
+import page from './routes/page';
 
 export default () => {
-  const app = Router();
-  user(app);
-  return app;
-};
+    const app = Router();
+    comment(app);
+    page(app)
+    return app;
+}

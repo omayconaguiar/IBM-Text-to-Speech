@@ -1,3 +1,5 @@
-import user from './user';
+import comment from './comment';
 
-export default [user];
+export default [
+    comment
+];

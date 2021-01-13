@@ -1,50 +1,64 @@
-# TalkMore API application
+# IBM WATSON
 
-<img
-    src="https://i.ibb.co/Yd8QcNB/frdfd.jpg"
-    alt="Swagger Page of that application"
-    title="Swagger Page of that application" />
+## Getting Started
 
-## Frontend Repository
+### Installing
 
-https://github.com/omayconaguiar/TalkMoreFrontend
+    * yarn install
 
-## Setup Para rodar local
+### Executing program
 
-```js
-yarn install
-```
+    * yarn dev
 
-### Docker - Subir banco de dados localmente
+## Exemplo arquivo env
 
-```js
-docker-compose up db
-```
+    * PORT=3000
 
-### Migrations
+    * LOG_LEVEL='debug'
 
-```js
-yarn knex migrate:latest
-```
+    * DB_NAME='teste'
+    * DB_USERNAME='teste'
+    * DB_PASSWORD='12345678'
 
-```js
-yarn knex seed:run
-```
+    * IBM
+    * API_KEY='hyqEg-9m-uTHX_2_8o-rPx0A8VlpgUJhK4mDfzDspQAA'
+    * URL='https://api.us-south.text-to-speech.watson.cloud.ibm.com/instances/7451aeae-df36-4b79-be01-88ccb3d8d50d'
 
-### Run 
+## IBM credenciais
 
-```js
-yarn dev
-```
+    Caso queira criar suas próprias credencias:
 
-### Test
+    https://cloud.ibm.com/login
 
-```js
-yarn test
-```
+## Buildando tabelas
 
-### Lint
+Criar banco de dados mysql.
 
-```js
-yarn lint
-```
+    * CREATE DATABASE comment;
+
+Criar tabela comment.
+
+    * CREATE TABLE comment(
+        id SERIAL PRIMARY KEY,    
+        text TEXT NOT NULL
+    )
+
+## Author
+
+    Maycon Aguiar 
+
+## Endpoints
+
+    * GET - Endereço com html:
+    http://localhost:3000
+
+    * POST - Cria comentário no banco de dados:
+
+    http://localhost:3000/comment:
+
+    * GET - Pega todos comentários do banco de dados:
+
+    http://localhost:3000/comment/
+
+    * GET - Pega comentário por id, e chama api ibm para converter o texto:
+    http://localhost:3000/comment/:id
