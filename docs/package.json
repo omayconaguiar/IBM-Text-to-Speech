@@ -1,0 +1,17 @@
+{
+  "name": "former-service-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "This is the API for the Former Service module.",
+  "scripts": {
+    "lint": "swagger-cli validate swagger.yml",
+    "bundle": "swagger-cli bundle -r -o openapi.json swagger.yml",
+    "watch": "yarn run lint && redoc-cli serve swagger.yml --watch --port 4000 --ssr --options.theme.colors.primary.main=purple --options.nativeScrollbars",
+    "build": "yarn run lint && yarn run bundle && redoc-cli bundle openapi.json --title=\"Spot Metrics API\" --output=index.html --options.theme.colors.primary.main=purple --options.nativeScrollbars"
+  },
+  "devDependencies": {
+    "redoc-cli": "0.9.8",
+    "swagger-cli": "4.0.3"
+  },
+  "dependencies": {}
+}

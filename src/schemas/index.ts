@@ -1,5 +1,3 @@
-import comment from './comment';
+import user from './user';
 
-export default [
-    comment
-];
+export default [user];

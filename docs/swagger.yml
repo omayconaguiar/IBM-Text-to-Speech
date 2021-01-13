@@ -1,0 +1,141 @@
+openapi: 3.0.2
+info:
+  version: 0.1.0
+  title: API TalkMore
+  description: API do modulo de FaleMais
+  contact:
+    name: API Support
+    email: maayconaguiar11@hotmail.com
+
+servers:
+  - description: Desenvolvimento
+    url: http://127.0.0.1:3000
+
+tags:
+  - name: User
+    description: Endpoints de usuários
+
+paths:
+  /user:
+    post:
+      tags:
+        - User
+      summary: Verifica qual o valor do plano 
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - origin
+                - destiny
+                - talkMore
+                - perHour
+              properties:
+                origin:
+                  type: string
+                  description: origem do DDD
+                  example: "011"
+                destiny:
+                  type: string
+                  description: destino do DDD
+                  example: "016"
+                talkMore:
+                  type: string
+                  description: plano escolhido
+                  example: "30"
+                perMinutes:
+                  type: string
+                  description: minutos
+                  example: "30"              
+      responses:
+        200:
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                required:
+                  - key
+                properties:
+                  origin:
+                    type: string
+                    example: "011"
+                  destiny:
+                    type: string
+                    example: "016"
+                  talkMore:
+                    type: string
+                    example: "30"
+                  perMinutes:
+                    type: string
+                    example: "30"         
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    get:
+      tags:
+        - User
+      summary: Retorna todos questionários
+      description: Pega todos questionários, com suas respectivas perguntas, alternativas e respostas associadas.
+      responses:
+        200:
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                required:
+                  - key
+                properties:
+                  paymentplan:
+                    type: string
+                    example: "5.5"
+                  paymentwithoutplan:
+                    type: string
+                    example: "66.5"
+                  origin:
+                    type: string
+                    example: "11"
+                  destiny:
+                    type: string
+                    example: "16"
+        500:
+          $ref: '#/components/responses/InternalServerError'
+components:  
+  responses:
+    OutOfCuttingTimeError:
+      description: Serviço indisponível
+      content:
+        'application/json':
+          schema:
+            properties:
+              code:
+                description: Código do erro
+                type: string
+                example: 'OUT_OF_CUTTING_TIME'
+              message:
+                description: Mensagem de erro
+                type: string
+                example: 'Service is out of cutting time'
+
+    InternalServerError:
+      description: Erro interno do servidor
+      content:
+        application/json:
+          schema:
+            properties:
+              code:
+                description: Código do erro
+                type: string
+                example: 'INTERNAL_SERVER_ERROR'            
+              details:
+                description: Detalhes do erro
+                type: array
+                example:  
+    Success:
+      description: Successo
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: Sucesso
+                type: integer
+                example: [1]
